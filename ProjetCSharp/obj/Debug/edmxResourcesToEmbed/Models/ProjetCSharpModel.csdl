@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BdHeritagesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__EFMigrationsHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AyantDroit">
+    <Key>
+      <PropertyRef Name="ADrID" />
+    </Key>
+    <Property Name="ADrID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Prenom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Adresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Sexe" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TypeHeritier" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="NomenclatureID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Heritier" Relationship="Self.FK_AyantDroit_Heritier" FromRole="AyantDroit" ToRole="Heritier" />
+  </EntityType>
+  <EntityType Name="Biens">
+    <Key>
+      <PropertyRef Name="BienID" />
+    </Key>
+    <Property Name="BienID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Montant" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="HeritageID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Heritage" Relationship="Self.FK_Biens_Heritage" FromRole="Biens" ToRole="Heritage" />
+  </EntityType>
+  <EntityType Name="Ecole">
+    <Key>
+      <PropertyRef Name="EcoleID" />
+    </Key>
+    <Property Name="EcoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="RegleID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Regles" Relationship="Self.FK_Ecole_Regles" FromRole="Ecole" ToRole="Regles" />
+    <NavigationProperty Name="Heritage" Relationship="Self.FK_Heritage_Ecole" FromRole="Ecole" ToRole="Heritage" />
+  </EntityType>
+  <EntityType Name="Heritage">
+    <Key>
+      <PropertyRef Name="HeritageID" />
+    </Key>
+    <Property Name="HeritageID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateDece" Type="DateTime" Precision="0" />
+    <Property Name="DateHeritage" Type="DateTime" Precision="0" />
+    <Property Name="EcoleID" Type="Int32" Nullable="false" />
+    <Property Name="Montant" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Biens" Relationship="Self.FK_Biens_Heritage" FromRole="Heritage" ToRole="Biens" />
+    <NavigationProperty Name="Ecole" Relationship="Self.FK_Heritage_Ecole" FromRole="Heritage" ToRole="Ecole" />
+    <NavigationProperty Name="Heritier" Relationship="Self.FK_Heritier_Heritage" FromRole="Heritage" ToRole="Heritier" />
+  </EntityType>
+  <EntityType Name="Heritier">
+    <Key>
+      <PropertyRef Name="NomenclatureID" />
+    </Key>
+    <Property Name="NomenclatureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sexe" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="HeritageID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AyantDroit" Relationship="Self.FK_AyantDroit_Heritier" FromRole="Heritier" ToRole="AyantDroit" />
+    <NavigationProperty Name="Heritage" Relationship="Self.FK_Heritier_Heritage" FromRole="Heritier" ToRole="Heritage" />
+  </EntityType>
+  <EntityType Name="Regles">
+    <Key>
+      <PropertyRef Name="RegleID" />
+    </Key>
+    <Property Name="RegleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Ecoles" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SourceID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ecole" Relationship="Self.FK_Ecole_Regles" FromRole="Regles" ToRole="Ecole" />
+    <NavigationProperty Name="Sources" Relationship="Self.FK_Regles_Sources" FromRole="Regles" ToRole="Sources" />
+  </EntityType>
+  <EntityType Name="Sources">
+    <Key>
+      <PropertyRef Name="SourceID" />
+    </Key>
+    <Property Name="SourceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Designation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Regles" Relationship="Self.FK_Regles_Sources" FromRole="Sources" ToRole="Regles" />
+  </EntityType>
+  <EntityType Name="Utilisateur">
+    <Key>
+      <PropertyRef Name="UtilisateurID" />
+    </Key>
+    <Property Name="UtilisateurID" Type="Int32" Nullable="false" />
+    <Property Name="mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AyantDroit_Heritier">
+    <End Role="Heritier" Type="Self.Heritier" Multiplicity="1" />
+    <End Role="AyantDroit" Type="Self.AyantDroit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Heritier">
+        <PropertyRef Name="NomenclatureID" />
+      </Principal>
+      <Dependent Role="AyantDroit">
+        <PropertyRef Name="NomenclatureID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Biens_Heritage">
+    <End Role="Heritage" Type="Self.Heritage" Multiplicity="1" />
+    <End Role="Biens" Type="Self.Biens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Heritage">
+        <PropertyRef Name="HeritageID" />
+      </Principal>
+      <Dependent Role="Biens">
+        <PropertyRef Name="HeritageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ecole_Regles">
+    <End Role="Regles" Type="Self.Regles" Multiplicity="1" />
+    <End Role="Ecole" Type="Self.Ecole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regles">
+        <PropertyRef Name="RegleID" />
+      </Principal>
+      <Dependent Role="Ecole">
+        <PropertyRef Name="RegleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Heritage_Ecole">
+    <End Role="Ecole" Type="Self.Ecole" Multiplicity="1" />
+    <End Role="Heritage" Type="Self.Heritage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ecole">
+        <PropertyRef Name="EcoleID" />
+      </Principal>
+      <Dependent Role="Heritage">
+        <PropertyRef Name="EcoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Heritier_Heritage">
+    <End Role="Heritage" Type="Self.Heritage" Multiplicity="1" />
+    <End Role="Heritier" Type="Self.Heritier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Heritage">
+        <PropertyRef Name="HeritageID" />
+      </Principal>
+      <Dependent Role="Heritier">
+        <PropertyRef Name="HeritageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Regles_Sources">
+    <End Role="Sources" Type="Self.Sources" Multiplicity="1" />
+    <End Role="Regles" Type="Self.Regles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sources">
+        <PropertyRef Name="SourceID" />
+      </Principal>
+      <Dependent Role="Regles">
+        <PropertyRef Name="SourceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BdHeritagesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__EFMigrationsHistory" EntityType="Self.C__EFMigrationsHistory" />
+    <EntitySet Name="AyantDroit" EntityType="Self.AyantDroit" />
+    <EntitySet Name="Biens" EntityType="Self.Biens" />
+    <EntitySet Name="Ecole" EntityType="Self.Ecole" />
+    <EntitySet Name="Heritage" EntityType="Self.Heritage" />
+    <EntitySet Name="Heritier" EntityType="Self.Heritier" />
+    <EntitySet Name="Regles" EntityType="Self.Regles" />
+    <EntitySet Name="Sources" EntityType="Self.Sources" />
+    <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" />
+    <AssociationSet Name="FK_AyantDroit_Heritier" Association="Self.FK_AyantDroit_Heritier">
+      <End Role="Heritier" EntitySet="Heritier" />
+      <End Role="AyantDroit" EntitySet="AyantDroit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Biens_Heritage" Association="Self.FK_Biens_Heritage">
+      <End Role="Heritage" EntitySet="Heritage" />
+      <End Role="Biens" EntitySet="Biens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ecole_Regles" Association="Self.FK_Ecole_Regles">
+      <End Role="Regles" EntitySet="Regles" />
+      <End Role="Ecole" EntitySet="Ecole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Heritage_Ecole" Association="Self.FK_Heritage_Ecole">
+      <End Role="Ecole" EntitySet="Ecole" />
+      <End Role="Heritage" EntitySet="Heritage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Heritier_Heritage" Association="Self.FK_Heritier_Heritage">
+      <End Role="Heritage" EntitySet="Heritage" />
+      <End Role="Heritier" EntitySet="Heritier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Regles_Sources" Association="Self.FK_Regles_Sources">
+      <End Role="Sources" EntitySet="Sources" />
+      <End Role="Regles" EntitySet="Regles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

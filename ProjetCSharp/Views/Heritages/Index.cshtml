@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ProjetCSharp.Models.Heritage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+<h2 style="background-image:url(/images/image.jpg)">Bibliotheque</h2>
+
+<div class="row">
+    <div class="col-6">
+        <p>Vueillez entrer votre type d'heiritier</p>
+        <div style="float:inherit" class="active-pink-3 active-pink-4 mb-4">
+            <input class="form-control" id="search" onkeyup="searchFunction()" name="search" placeholder="Recherche" />
+        </div><br />
+    </div>
+    <div class="col-6">
+        <ul class="list-group-item" id="item">
+            <li class="item"><a href="http://inheritanceinislam.blogspot.com/2011/09/non-heirs-and-impediments-to.html">Non héritiers et empêchements de succession</a></li>
+            <li class="item"><a href="/AyantDroits/Index">Héritières</a></li>
+            <li class="item"><a href="http://inheritanceinislam.blogspot.com/2011/08/male-heirs.html">Héritiers mâles</a></li>
+            <li class="item"><a href="http://inheritanceinislam.blogspot.com/2011/09/exclusion.html">Exclusion</a></li>
+            <li class="item"><a href="http://inheritanceinislam.blogspot.com/2011/09/exclusion-2.html">Un fils exclut tous les petits-enfants</a></li>
+            <li class="item"><a href="http://inheritanceinislam.blogspot.com/2011/09/exclusion-2.html">Une fille n'exclut pas les petits-enfants</a></li>
+            <li class="item"><a href="http://inheritanceinislam.blogspot.com/2011/09/exclusion-3.html">ordre d"arrangement des exclusions</a></li>
+            <li class="item"><a href="http://inheritanceinislam.blogspot.com/2011/09/non-heirs-and-impediments-to.html">Mort simultanée</a></li>
+        </ul>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    function searchFunction() {
+        // Declare variables
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById('search');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("item");
+        li = ul.getElementsByTagName('li');
+
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+</script>

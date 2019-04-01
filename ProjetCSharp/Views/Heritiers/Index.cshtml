@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProjetCSharp.Models.Heritier>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Heritier</h2>
+
+<p>
+    @Html.ActionLink("Nouveau Heritier", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Heritage.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Heritage.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Modifier", "Edit", new { id=item.NomenclatureID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.NomenclatureID }) |
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.NomenclatureID })
+        </td>
+    </tr>
+}
+
+</table>

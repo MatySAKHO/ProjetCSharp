@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BdHeritagesModelStoreContainer" CdmEntityContainer="BdHeritagesEntities">
+    <EntitySetMapping Name="C__EFMigrationsHistory">
+      <EntityTypeMapping TypeName="BdHeritagesModel.C__EFMigrationsHistory">
+        <MappingFragment StoreEntitySet="__EFMigrationsHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AyantDroit">
+      <EntityTypeMapping TypeName="BdHeritagesModel.AyantDroit">
+        <MappingFragment StoreEntitySet="AyantDroit">
+          <ScalarProperty Name="ADrID" ColumnName="ADrID" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Sexe" ColumnName="Sexe" />
+          <ScalarProperty Name="TypeHeritier" ColumnName="TypeHeritier" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="NomenclatureID" ColumnName="NomenclatureID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Biens">
+      <EntityTypeMapping TypeName="BdHeritagesModel.Biens">
+        <MappingFragment StoreEntitySet="Biens">
+          <ScalarProperty Name="BienID" ColumnName="BienID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Montant" ColumnName="Montant" />
+          <ScalarProperty Name="HeritageID" ColumnName="HeritageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ecole">
+      <EntityTypeMapping TypeName="BdHeritagesModel.Ecole">
+        <MappingFragment StoreEntitySet="Ecole">
+          <ScalarProperty Name="EcoleID" ColumnName="EcoleID" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="RegleID" ColumnName="RegleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Heritage">
+      <EntityTypeMapping TypeName="BdHeritagesModel.Heritage">
+        <MappingFragment StoreEntitySet="Heritage">
+          <ScalarProperty Name="HeritageID" ColumnName="HeritageID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateDece" ColumnName="DateDece" />
+          <ScalarProperty Name="DateHeritage" ColumnName="DateHeritage" />
+          <ScalarProperty Name="EcoleID" ColumnName="EcoleID" />
+          <ScalarProperty Name="Montant" ColumnName="Montant" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Heritier">
+      <EntityTypeMapping TypeName="BdHeritagesModel.Heritier">
+        <MappingFragment StoreEntitySet="Heritier">
+          <ScalarProperty Name="NomenclatureID" ColumnName="NomenclatureID" />
+          <ScalarProperty Name="Sexe" ColumnName="Sexe" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="HeritageID" ColumnName="HeritageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Regles">
+      <EntityTypeMapping TypeName="BdHeritagesModel.Regles">
+        <MappingFragment StoreEntitySet="Regles">
+          <ScalarProperty Name="RegleID" ColumnName="RegleID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Ecoles" ColumnName="Ecoles" />
+          <ScalarProperty Name="Commentaire" ColumnName="Commentaire" />
+          <ScalarProperty Name="SourceID" ColumnName="SourceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sources">
+      <EntityTypeMapping TypeName="BdHeritagesModel.Sources">
+        <MappingFragment StoreEntitySet="Sources">
+          <ScalarProperty Name="SourceID" ColumnName="SourceID" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Utilisateur">
+      <EntityTypeMapping TypeName="BdHeritagesModel.Utilisateur">
+        <MappingFragment StoreEntitySet="Utilisateur">
+          <ScalarProperty Name="UtilisateurID" ColumnName="UtilisateurID" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

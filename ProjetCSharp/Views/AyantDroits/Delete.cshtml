@@ -1,0 +1,88 @@
+﻿@model ProjetCSharp.Models.AyantDroit
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Suppression d'un AyantDroit</h2>
+
+<h3>Etes-vous sur de vouloir supprimer?</h3>
+<div>
+    <h4>AyantDroit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Prenom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prenom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adresse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sexe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sexe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeHeritier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeHeritier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Heritier.Sexe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Heritier.Sexe)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Afficher la liste", "Index")
+        </div>
+    }
+</div>
